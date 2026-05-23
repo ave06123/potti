@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Potti Bot | Knight Online Kusursuz Oyun Asistanı</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #0d0d12;
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+            
+            background-image: linear-gradient(rgba(13, 13, 18, 0.30), rgba(13, 13, 18, 0.50)), url('images/arkaplan.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        header {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 30px 50px;
+            background-color: transparent;
+            border-bottom: none;
+            position: absolute;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-container:hover {
+            transform: scale(1.05);
+        }
+
+        .pm-icon {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 46px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            background: linear-gradient(to bottom, #ffea8c 0%, #d4af37 40%, #996515 80%, #ffcc00 100%);
+            -webkit-background-clip: text;
+            background-clip: text; /* Tarayıcı uyumluluğu uyarısı giderildi */
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 12px rgba(255, 204, 0, 0.6));
+        }
+
+        .logo-text {
+            font-size: 26px;
+            font-weight: 800;
+            color: #fff;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.9);
+            margin-top: 5px;
+        }
+        .logo-text span { color: #ffcc00; }
+
+        .hero {
+            text-align: center;
+            padding: 220px 20px 100px;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            margin-bottom: 20px;
+            font-weight: 800;
+            line-height: 1.2;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.9);
+        }
+
+        .hero h1 span {
+            color: #ffcc00;
+            text-shadow: 0 0 15px rgba(255, 204, 0, 0.5);
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #ddd;
+            margin-bottom: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: center; /* İki nokta üst üste hatası giderildi */
+            gap: 25px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 18px 45px;
+            font-size: 18px;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+        }
+
+        .btn-buy {
+            color: #0d0d12;
+            background-color: #ffcc00;
+            border: 2px solid #ffcc00;
+        }
+
+        .btn-buy:hover {
+            background-color: rgba(255,204,0,0.1);
+            color: #ffcc00;
+            box-shadow: 0 0 25px rgba(255, 204, 0, 0.7);
+        }
+
+        .btn-download {
+            color: #fff;
+            background-color: rgba(26, 26, 37, 0.8);
+            border: 2px solid #555;
+            backdrop-filter: blur(5px);
+        }
+
+        .btn-download:hover {
+            background-color: #232332;
+            border-color: #ffcc00;
+            color: #ffcc00;
+            box-shadow: 0 0 20px rgba(255, 204, 0, 0.4);
+        }
+
+        .instagram-link {
+            display: block;
+            margin-top: 25px;
+            color: #ffcc00;
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+            margin-bottom: 50px;
+        }
+
+        .instagram-link i {
+            margin-right: 10px;
+            font-size: 30px;
+            vertical-align: middle;
+        }
+
+        .instagram-link:hover {
+            color: #ffffff;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+            transform: scale(1.05);
+        }
+
+        .video-showcase {
+            max-width: 900px;
+            margin: 0 auto;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 2px solid #ffcc00;
+            box-shadow: 0 0 40px rgba(255, 204, 0, 0.3);
+            animation: fadeIn 2s ease-in-out;
+            position: relative;
+            aspect-ratio: 16 / 9; 
+        }
+
+        .video-showcase video {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: fill; 
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .features-section {
+            padding: 60px 20px 100px;
+            background-color: rgba(21, 21, 30, 0.4);
+            border-top: 1px solid rgba(255, 204, 0, 0.1);
+            backdrop-filter: blur(3px);
+        }
+
+        .features-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+
+        .feature-card {
+            background-color: rgba(21, 21, 30, 0.8);
+            padding: 40px;
+            border-radius: 12px;
+            width: calc(50% - 15px);
+            min-width: 320px;
+            border: 1px solid #333;
+            transition: all 0.3s ease;
+            text-align: left;
+            backdrop-filter: blur(10px);
+        }
+
+        .feature-card.full-width {
+            width: 100%;
+        }
+
+        .feature-card:hover {
+            border-color: #ffcc00;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+        }
+
+        .feature-card h3 {
+            font-size: 22px;
+            margin-bottom: 20px;
+            color: #ffcc00;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+        }
+
+        .feature-card p {
+            color: #ccc;
+            font-size: 15px;
+            margin-bottom: 15px;
+            line-height: 1.7;
+            text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+        }
+
+        .feature-card p strong {
+            color: #fff;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            background-color: rgba(9, 9, 11, 0.9);
+            color: #888;
+            font-size: 14px;
+            border-top: 1px solid #1a1a25;
+        }
+
+        @media (max-width: 992px) {
+            .hero h1 { font-size: 40px; }
+            .hero { padding-top: 180px; }
+            .feature-card { width: 100%; }
+            header { padding: 30px 20px; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo-container">
+            <div class="pm-icon">PM</div>
+            <div class="logo-text">POTTI <span>BOT</span></div>
+        </a>
+    </header>
+
+    <section class="hero">
+        <h1>Sınırları Zorla, <span>Rakiplerin Önünde Ol</span></h1>
+        <p>Saliselerin bile kaderi belirlediği anlarda kusursuzluk elinizin altında. Potti Bot, Asas ve Okçu sınıfları için özel olarak tasarlanmış; insan reflekslerini taklit eden akıllı bir oyun asistanıdır. Siz sadece stratejinizi belirleyin, geriye kalan tüm mekanik yükü Potti Bot üstlensin!</p>
+        
+        <div class="btn-container">
+            <a onclick="window.location.href='https://github.com/ave06123/potti/releases/download/Setup/Setup.exe'" class="btn btn-download" style="cursor: pointer;">Setup İndir</a>
+            <a href="https://www.shopier.com/potti" target="_blank" class="btn btn-buy">Hemen Satın Al (Shopıer)</a>
+        </div>
+
+        <a href="https://www.instagram.com/pottimacro/" target="_blank" class="instagram-link">
+            <i class="fab fa-instagram"></i>@pottimacro
+        </a>
+
+        <div class="video-showcase">
+            <video autoplay loop muted playsinline>
+                <source src="images/video.mp4" type="video/mp4">
+                Tarayıcınız bu videoyu desteklemiyor.
+            </video>
+        </div>
+
+    </section>
+
+    <section class="features-section">
+        <div class="features-grid">
+            
+            <div class="feature-card">
+                <h3>🔥 Fırtına Gibi Asas Komboları</h3>
+                <p>Yorulmak bilmeyen, sektirmeyen ve asla "fail" vermeyen kusursuz bir atak motoru! İster kıyasıya bir düelloda (WS) olun, ister kalabalık savaşların ortasında; Potti'nin dinamik kombo sistemi ve özel <strong>Tokat Modu</strong> sayesinde hedefinize nefes aldırmayacaksınız.</p>
+                <p>Akıllı yetenek takibi sayesinde skilleriniz her zaman en doğru saniyede hedefe ulaşır.</p>
+            </div>
+
+            <div class="feature-card">
+                <h3>🛡️ Ölümsüzlük Sırrı: Akıllı Koruma</h3>
+                <p>Siz sadece rakiplerinize odaklanın, hayatta kalmayı Potti'ye bırakın.</p>
+                <p><strong>Kusursuz Minör ve Potion:</strong> Ekrandaki can ve mana barınızı anlık olarak okuyarak, belirlediğiniz yüzdelere düştüğünde ışık hızında müdahale eder.</p>
+                <p><strong>Gelişmiş Savunma:</strong> Beklenmedik anlarda yediğiniz kör (Blinding) veya M20 gibi yeteneklere anında reaksiyon gösterir. Göz açıp kapayıncaya kadar kalkanınızı takar, Cure kullanır ve savaşa devam etmenizi sağlar.</p>
+            </div>
+
+            <div class="feature-card">
+                <h3>🏹 Yorulmak Bilmeyen Okçu Farm Modu</h3>
+                <p>Asas sisteminden tamamen bağımsız çalışan gelişmiş Okçu Asistanı ile mobları otomatiğe bağlayın. Ekranda beliren hedefleri akıllı görsel sistemiyle kendi tespit eder, hedefe koşarken hasar vurmaya devam eder (72 Skilli) ve çoklu ok yeteneklerini kusursuz bir ritimle kullanır.</p>
+                <p>Size sadece arkanıza yaslanıp ganimetleri toplamak kalır.</p>
+            </div>
+
+            <div class="feature-card">
+                <h3>⚙️ Hayat Kurtaran Otomasyonlar</h3>
+                <p>Potti, sadece savaşta değil, oyunun can sıkıcı detaylarında da yanınızdadır:</p>
+                <p><strong>Oto RPR:</strong> Silahınız mı yandı? Otomatik sayfayı değiştirir, tamiri yapar ve atağa devam eder.<br>
+                <strong>Akıllı Duratlama:</strong> Kritik vuruş ve defans yeteneklerini tam zamanında yakalayıp sürelerini uzatır.<br>
+                <strong>Hızlı Takı & Styx:</strong> Tek bir tuşla takılarınızı saniyeler içinde değiştirin veya rakibinizin manasını anında silmek için kusursuz Styx döngüsünü kullanın.</p>
+            </div>
+
+            <div class="feature-card full-width">
+                <h3>🔒 Üst Düzey Güvenlik ve Modern Arayüz</h3>
+                <p>Potti Bot, oyunun dosyalarına veya belleğine asla müdahale etmez. İnsan gözü gibi sadece ekranı izler ve sanki siz klavyeye basıyormuşsunuz gibi donanımsal düzeyde temiz tepkiler verir. Bu sayede en zorlu korumalara sahip sunucularda bile görünmez kalırsınız.</p>
+                <p>Tüm tuş atamalarınızı, hız ayarlarınızı ve kalibrasyonlarınızı birkaç tıklamayla kolayca yapabilirsiniz. Potti ile tanışın; yorgunluğu geride bırakın, efsanevi anlara odaklanın!</p>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Potti Bot. Knight Online ile doğrudan bir bağlantısı yoktur, donanımsal okuma yapan yardımcı bir yazılımdır.</p>
+    </footer>
+
+</body>
+</html>
