@@ -429,11 +429,11 @@
                 countElement.innerText = currentCount;
                 localStorage.setItem('pottiOnlineCount', currentCount);
 
-                setInterval(() => {
-                    currentCount = calculateNextCount(currentCount);
-                    countElement.innerText = currentCount;
-                    localStorage.setItem('pottiOnlineCount', currentCount);
-                }, 300000);
+            setInterval(() => {
+                currentCount = calculateNextCount(currentCount);
+                countElement.innerText = currentCount;
+                localStorage.setItem('pottiOnlineCount', currentCount);
+            }, 60000);
             }
 
             initCounter();
