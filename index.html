@@ -2,7 +2,8 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 1. DEĞİŞİKLİK: Viewport genişliğini sabit bir masaüstü çözünürlüğüne (1280px) ayarladık -->
+    <meta name="viewport" content="width=1280">
     <title>Potti Bot | Knight Online Kusursuz Oyun Asistanı</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -19,7 +20,6 @@
             color: #ffffff;
             line-height: 1.6;
             overflow-x: hidden;
-            
             background-image: linear-gradient(rgba(13, 13, 18, 0.30), rgba(13, 13, 18, 0.50)), url('images/arkaplan.jpg');
             background-size: cover;
             background-position: center;
@@ -28,7 +28,7 @@
 
         header {
             display: flex;
-            justify-content: flex-start;
+            justify-content: space-between;
             align-items: center;
             padding: 30px 50px;
             background-color: transparent;
@@ -58,7 +58,7 @@
             letter-spacing: 2px;
             background: linear-gradient(to bottom, #ffea8c 0%, #d4af37 40%, #996515 80%, #ffcc00 100%);
             -webkit-background-clip: text;
-            background-clip: text; /* Tarayıcı uyumluluğu uyarısı giderildi */
+            background-clip: text;
             -webkit-text-fill-color: transparent;
             filter: drop-shadow(0 0 12px rgba(255, 204, 0, 0.6));
         }
@@ -72,6 +72,42 @@
             margin-top: 5px;
         }
         .logo-text span { color: #ffcc00; }
+
+        .online-counter {
+            background-color: rgba(21, 21, 30, 0.8);
+            border: 1px solid #333;
+            padding: 10px 20px;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 15px;
+            font-weight: 600;
+            color: #ddd;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            transition: all 0.3s ease;
+        }
+
+        .online-counter:hover {
+            border-color: #2ecc71;
+            box-shadow: 0 0 15px rgba(46, 204, 113, 0.3);
+        }
+
+        .pulse-dot {
+            width: 12px;
+            height: 12px;
+            background-color: #2ecc71;
+            border-radius: 50%;
+            box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.7);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(46, 204, 113, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(46, 204, 113, 0); }
+        }
 
         .hero {
             text-align: center;
@@ -106,7 +142,7 @@
 
         .btn-container {
             display: flex;
-            justify-content: center; /* İki nokta üst üste hatası giderildi */
+            justify-content: center;
             gap: 25px;
             flex-wrap: wrap;
             margin-bottom: 30px;
@@ -269,12 +305,7 @@
             border-top: 1px solid #1a1a25;
         }
 
-        @media (max-width: 992px) {
-            .hero h1 { font-size: 40px; }
-            .hero { padding-top: 180px; }
-            .feature-card { width: 100%; }
-            header { padding: 30px 20px; justify-content: center; }
-        }
+        /* 2. DEĞİŞİKLİK: @media (max-width: 992px) ile başlayan mobil tasarım kodlarını tamamen sildik */
     </style>
 </head>
 <body>
@@ -284,6 +315,11 @@
             <div class="pm-icon">PM</div>
             <div class="logo-text">POTTI <span>BOT</span></div>
         </a>
+        
+        <div class="online-counter">
+            <span class="pulse-dot"></span>
+            <span id="online-count">--</span> Kullanıcı Aktif
+        </div>
     </header>
 
     <section class="hero">
@@ -305,12 +341,10 @@
                 Tarayıcınız bu videoyu desteklemiyor.
             </video>
         </div>
-
     </section>
 
     <section class="features-section">
         <div class="features-grid">
-            
             <div class="feature-card">
                 <h3>🔥 Fırtına Gibi Asas Komboları</h3>
                 <p>Yorulmak bilmeyen, sektirmeyen ve asla "fail" vermeyen kusursuz bir atak motoru! İster kıyasıya bir düelloda (WS) olun, ister kalabalık savaşların ortasında; Potti'nin dinamik kombo sistemi ve özel <strong>Tokat Modu</strong> sayesinde hedefinize nefes aldırmayacaksınız.</p>
@@ -343,7 +377,6 @@
                 <p>Potti Bot, oyunun dosyalarına veya belleğine asla müdahale etmez. İnsan gözü gibi sadece ekranı izler ve sanki siz klavyeye basıyormuşsunuz gibi donanımsal düzeyde temiz tepkiler verir. Bu sayede en zorlu korumalara sahip sunucularda bile görünmez kalırsınız.</p>
                 <p>Tüm tuş atamalarınızı, hız ayarlarınızı ve kalibrasyonlarınızı birkaç tıklamayla kolayca yapabilirsiniz. Potti ile tanışın; yorgunluğu geride bırakın, efsanevi anlara odaklanın!</p>
             </div>
-
         </div>
     </section>
 
@@ -351,5 +384,60 @@
         <p>&copy; 2026 Potti Bot. Knight Online ile doğrudan bir bağlantısı yoktur, donanımsal okuma yapan yardımcı bir yazılımdır.</p>
     </footer>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const countElement = document.getElementById('online-count');
+            
+            function getBoundsByHour() {
+                const hour = new Date().getHours();
+                
+                if (hour >= 2 && hour < 9) {
+                    return { min: 30, max: 95 };
+                } else if (hour >= 9 && hour < 14) {
+                    return { min: 100, max: 250 };
+                } else if (hour >= 14 && hour < 19) {
+                    return { min: 250, max: 380 };
+                } else {
+                    return { min: 380, max: 500 };
+                }
+            }
+
+            function calculateNextCount(current) {
+                const bounds = getBoundsByHour();
+                const variance = Math.floor(Math.random() * 51) - 25; 
+                let nextCount = current + variance;
+
+                if (nextCount < bounds.min) {
+                    nextCount = bounds.min + Math.floor(Math.random() * 20);
+                } else if (nextCount > bounds.max) {
+                    nextCount = bounds.max - Math.floor(Math.random() * 20);
+                }
+                
+                return nextCount;
+            }
+
+            function initCounter() {
+                const bounds = getBoundsByHour();
+                let currentCount = localStorage.getItem('pottiOnlineCount');
+
+                if (!currentCount || currentCount < bounds.min || currentCount > bounds.max) {
+                    currentCount = Math.floor(Math.random() * (bounds.max - bounds.min + 1)) + bounds.min;
+                } else {
+                    currentCount = parseInt(currentCount);
+                }
+
+                countElement.innerText = currentCount;
+                localStorage.setItem('pottiOnlineCount', currentCount);
+
+                setInterval(() => {
+                    currentCount = calculateNextCount(currentCount);
+                    countElement.innerText = currentCount;
+                    localStorage.setItem('pottiOnlineCount', currentCount);
+                }, 300000);
+            }
+
+            initCounter();
+        });
+    </script>
 </body>
 </html>
